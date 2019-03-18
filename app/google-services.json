@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "108017046936",
+    "firebase_url": "https://resqpet-a4760.firebaseio.com",
+    "project_id": "resqpet-a4760",
+    "storage_bucket": "resqpet-a4760.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108017046936:android:ad3ec11df5639376",
+        "android_client_info": {
+          "package_name": "com.example.loginandregister"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108017046936-stuqnkh4kki43tre6u2kqp7ajdhjmvck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4jw41-b59-0ABl5SfgMKF9IMT0iGoTsM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
