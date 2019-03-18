@@ -6,95 +6,230 @@
     android:layout_height="match_parent"
     tools:context=".AccountActivity.SignupActivity">
 
+    <!--<LinearLayout-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:background="@color/colorPrimaryDark"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="vertical"-->
+    <!--android:padding="@dimen/activity_horizontal_margin"-->
+    <!--tools:ignore="MissingConstraints">-->
+
+
+    <!--<ImageView-->
+    <!--android:layout_width="246dp"-->
+    <!--android:layout_height="147dp"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginBottom="30dp"-->
+    <!--android:contentDescription=""-->
+    <!--android:src="@mipmap/ic_launcher"-->
+    <!--tools:ignore="ContentDescription"-->
+    <!--tools:srcCompat="@tools:sample/avatars[2]" />-->
+
+
+    <!--<EditText-->
+    <!--android:id="@+id/email"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="@string/email"-->
+    <!--android:inputType="textEmailAddress"-->
+    <!--android:maxLines="1"-->
+    <!--android:textColor="@android:color/white" />-->
+
+
+
+
+    <!--<EditText-->
+    <!--android:id="@+id/password"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:focusableInTouchMode="true"-->
+    <!--android:hint="@string/hint_password"-->
+    <!--android:imeActionId="@+id/login"-->
+    <!--android:imeOptions="actionUnspecified"-->
+    <!--android:inputType="textPassword"-->
+    <!--android:maxLines="1"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--tools:ignore="InvalidImeActionId" />-->
+
+
+    <!--<Button-->
+    <!--android:id="@+id/sign_up_button"-->
+    <!--style="?android:textAppearanceSmall"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:background="@color/colorAccent"-->
+    <!--android:text="@string/action_sign_in_short"-->
+    <!--android:textColor="@android:color/black"-->
+    <!--android:textStyle="bold" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btn_reset_password"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="20dip"-->
+    <!--android:background="@null"-->
+    <!--android:text="@string/btn_forgot_password"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:textColor="@color/colorAccent" />-->
+
+    <!--&lt;!&ndash; Link to Login Screen &ndash;&gt;-->
+
+    <!--<Button-->
+    <!--android:id="@+id/sign_in_button"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="20dip"-->
+    <!--android:background="@null"-->
+    <!--android:text="@string/btn_link_to_login"-->
+    <!--android:textAllCaps="false"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textSize="15sp" />-->
+    <!--</LinearLayout>-->
+
+    <!--<ProgressBar-->
+    <!--android:id="@+id/progressBar"-->
+    <!--android:layout_width="30dp"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:layout_gravity="center|bottom"-->
+    <!--android:layout_marginBottom="20dp"-->
+    <!--android:visibility="gone"-->
+    <!--tools:ignore="MissingConstraints" />-->
+
+    <!--</android.support.constraint.ConstraintLayout>-->
+    <!--================-->
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#ffffff"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin"
         tools:ignore="MissingConstraints">
 
 
-        <TextView
-            android:id="@+id/textView"
+
+        <ScrollView
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/txt_fname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="First Name"/>
+
+                <EditText
+                    android:id="@+id/txt_lname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Last Name"/>
+
+                <EditText
+                    android:id="@+id/txt_pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+
+                <EditText
+                    android:id="@+id/txt_pwdre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:hint="Reenter password"/>
+
+                <EditText
+                    android:id="@+id/txt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textEmailAddress"
+                    android:hint ="email"/>
+                <EditText
+                    android:id="@+id/txt_ph"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Phone Number" />
+
+                <EditText
+                    android:id="@+id/txt_addrl1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="address line 1" />
+
+                <EditText
+                    android:id="@+id/txt_addrl2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="address line 2"/>
+
+                <EditText
+                    android:id="@+id/txt_pc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="Postal code" />
+                <EditText
+                    android:id="@+id/txt_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:hint="State" />
+
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Register"
+                    android:id="@+id/sign_up_button"/>
+
+                <Button
+                    android:id="@+id/sign_in_button"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:background="@null"
+                    android:text="Already registered? Login!"
+                    android:textAllCaps="false"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </ScrollView>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create account "
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="@android:color/black"
-            android:bottom="16dp"
-            />
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:textColor="@android:color/black" />
-
-
-
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusableInTouchMode="true"
-            android:hint="@string/hint_password"
-            android:imeActionId="@+id/login"
-            android:imeOptions="actionUnspecified"
-            android:inputType="textPassword"
-            android:maxLines="1"
-            android:textColor="@android:color/black"
-            tools:ignore="InvalidImeActionId" />
-
-
-        <Button
-            android:id="@+id/sign_up_button"
-            style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorAccent"
-            android:text="@string/action_sign_in_short"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <!-- Link to Login Screen -->
-
-        <Button
-            android:id="@+id/sign_in_button"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dip"
-            android:background="@null"
-            android:text="Already have an account? Login now"
-            android:textAllCaps="false"
-            android:textColor="#808080"
-            android:textSize="15sp" />
-
-        <Button
-            android:id="@+id/btn_reset_password"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@null"
-            android:text="@string/btn_forgot_password"
-            android:textAllCaps="false"
-            android:textColor="#808080" />
-
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+        <!--</LinearLayout>-->
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone"
-        tools:ignore="MissingConstraints" />
-
 </android.support.constraint.ConstraintLayout>
