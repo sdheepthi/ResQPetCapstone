@@ -108,17 +108,27 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@color/colorPrimaryDark"
+        android:background="#ffffff"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="75"
+            android:text="Sign Up"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#000000" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
@@ -131,16 +141,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="First Name"/>
+                    android:hint="First Name"
+                    android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/txt_lname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="Last Name"/>
+                    android:hint="Last Name"
+                    android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/txt_pwd"
@@ -155,79 +165,93 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPassword"
-                    android:hint="Reenter password"/>
+                    android:hint="Confirm password"
+                    android:inputType="textPassword" />
 
                 <EditText
                     android:id="@+id/txt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textEmailAddress"
-                    android:hint ="email"/>
+                    android:hint="Email"
+                    android:inputType="textEmailAddress" />
+
                 <EditText
                     android:id="@+id/txt_ph"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="Phone Number" />
+                    android:hint="Phone Number"
+                    android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/txt_addrl1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="address line 1" />
+                    android:hint="Address line 1"
+                    android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/txt_addrl2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="address line 2"/>
+                    android:hint="Address line 2"
+                    android:inputType="textPersonName" />
 
-                <EditText
-                    android:id="@+id/txt_pc"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="Postal code" />
-                <EditText
-                    android:id="@+id/txt_state"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="State" />
 
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/txt_state"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="State"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/txt_pc"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Postal code"
+                        android:inputType="textPersonName" />
+                </LinearLayout>
 
 
                 <Button
+                    android:id="@+id/sign_up_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dip"
+                    android:background="@color/colorAccent"
                     android:text="Register"
-                    android:id="@+id/sign_up_button"/>
+                    android:textColor="#ffffff" />
 
                 <Button
                     android:id="@+id/sign_in_button"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dip"
+                    android:layout_marginTop="2dip"
                     android:background="@null"
                     android:text="Already registered? Login!"
                     android:textAllCaps="false"
                     android:textSize="15sp" />
             </LinearLayout>
         </ScrollView>
+
         <ProgressBar
             android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="27dp"
+            android:layout_height="30dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true" />
         <!--</LinearLayout>-->
