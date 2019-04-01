@@ -18,6 +18,7 @@ import com.example.loginandregister.MainActivity;
 import com.example.loginandregister.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -38,7 +39,7 @@ public class SignupActivity extends AppCompatActivity  {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
+        FirebaseApp.initializeApp(this);
         databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         fname = (EditText) findViewById(R.id.txt_fname);
         lname = (EditText) findViewById(R.id.txt_lname);
@@ -179,6 +180,9 @@ public class SignupActivity extends AppCompatActivity  {
                             if(task.isSuccessful())
                             {
                                 Toast.makeText(getApplicationContext(), "RegistrationSuccess", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                                startActivity(intent);
+                                finish();
                             }
                             else
                             {
