@@ -5,10 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AccountActivity.addpetactivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff">
+        android:background="#ffffff"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -20,6 +23,13 @@
                 android:orientation="vertical">
 
 
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pet Info"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
                 <EditText
                     android:id="@+id/txt_petname"
@@ -27,8 +37,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="Name" />
+                    android:background="@drawable/roundinput"
+                    android:hint="Name"
+                    android:inputType="textPersonName" />
 
                 <EditText
                     android:id="@+id/txt_petage"
@@ -36,23 +47,33 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="pet age" />
+                    android:hint="pet age"
+                    android:background="@drawable/roundinput"
+                    android:inputType="textPersonName" />
+
                 <EditText
                     android:id="@+id/txt_petbreed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:hint="pet breed" />
+                    android:hint="pet breed"
+                    android:background="@drawable/roundinput"
+                    android:inputType="textPersonName" />
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Adoption Fee" />
 
                 <Spinner
                     android:id="@+id/spr_petgender"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:entries="@array/petgender"
-                    >
+                    android:entries="@array/petgender">
 
                 </Spinner>
 
@@ -64,7 +85,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vaccinated?"/>
+                        android:text="Vaccinated?" />
 
                     <RadioButton
                         android:id="@+id/btn_yes"
@@ -84,17 +105,17 @@
                 </LinearLayout>
 
 
-                    <ImageView
-                        android:id="@+id/img_petimage"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/petbackgrounf"/>
+                <ImageView
+                    android:id="@+id/img_petimage"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/petbackgrounf" />
 
                 <EditText
                     android:id="@+id/txt_petDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="186dp"
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Pet description"
@@ -104,7 +125,7 @@
                     android:id="@+id/btn_uploadForAdoption"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Upload for adoption"/>
+                    android:text="Finish" />
 
             </LinearLayout>
 
