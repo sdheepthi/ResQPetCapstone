@@ -40,22 +40,30 @@
                     android:background="@drawable/petbackgrounf" />
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Type" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Dog" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Cat" />
+                    <RadioButton
+
+                        android:layout_width="14dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="100dp"
+
+                        android:text="Dog" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Cat" />
+
+                </LinearLayout>
+
 
                 <EditText
                     android:id="@+id/txt_petname"
@@ -64,6 +72,10 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Name"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
                     android:inputType="textPersonName" />
 
                 <EditText
@@ -73,30 +85,27 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:hint="Age"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
                     android:inputType="textPersonName" />
-
-                <EditText
-                    android:id="@+id/txt_petbreed"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Breed"
-                    android:layout_margin="10dp"
-                    android:inputType="textPersonName" />
-
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:hint="Adoption Fee" />
 
                 <Spinner
                     android:id="@+id/spr_petgender"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:entries="@array/catbreed">
 
                 </Spinner>
