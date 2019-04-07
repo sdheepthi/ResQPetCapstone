@@ -77,19 +77,6 @@
                     android:inputType="textPersonName" />
 
                 <EditText
-                    android:id="@+id/txt_petage"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:hint="Age"
-                    android:inputType="textPersonName" />
-
-                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
@@ -99,8 +86,17 @@
                     android:ems="10"
                     android:hint="Adoption Fee" />
 
+
                 <Spinner
-                    android:id="@+id/spr_petgender"
+                    android:id="@+id/spr_petage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:entries="@array/age">
+                </Spinner>
+
+                <Spinner
+                    android:id="@+id/spr_petbreed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
@@ -150,12 +146,14 @@
                             android:text="Gender" />
 
                         <RadioButton
+                            android:id="@+id/btn_male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Male" />
 
                         <RadioButton
+                            android:id="@+id/btn_female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
