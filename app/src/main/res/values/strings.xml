@@ -31,15 +31,32 @@
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
     <string name="email_id">Email ID</string>
 
+    <array name="pettype">
+        <item>Dogs</item>
+        <item>cats</item>
+    </array>
     <array name="petgender">
-    <item>Pet gender</item>
-    <item>Male</item>
-    <item>Female</item>
-</array>
-
-
+        <item>Pet gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </array>
+    <array name="ageRange">
+        <item>0-3</item>
+        <item>4-6</item>
+        <item>7-9</item>
+        <item>10 and above</item>
+    </array>
+    <array name="Dogbreed">
+        <item>Labrador</item>
+        <item>pitbull</item>
+        <item>german shepard</item>
+    </array>
+    <array name="catBreed">
+        <item>Feline</item>
+        <item>cat breed2</item>
+    </array>
     <array name="catbreed">
-        <item> Breed</item>
+        <item>Breed</item>
         <item>Unknown</item>
         <item>Abyssinian</item>
         <item>American Curl</item>
