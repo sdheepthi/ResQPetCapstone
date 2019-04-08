@@ -63,13 +63,17 @@ public class addpetactivity extends AppCompatActivity {
         userpetsDB = FirebaseDatabase.getInstance().getReference("userpets");
 
         pet_name = (EditText) findViewById(R.id.txt_petname);
-        pet_age = (EditText) findViewById(R.id.txt_petage);
-        pet_breed = (EditText) findViewById(R.id.txt_petbreed);
-        pet_gender = (Spinner) findViewById(R.id.spr_petgender);
+        //pet_age = (EditText) findViewById(R.id.txt_petage);
+        //pet_breed = (Spinner) findViewById(R.id.spr_petbreed);
+        //pet_gender = (Spinner) findViewById(R.id.spr_petgender);
         pet_description = (EditText) findViewById(R.id.txt_petDescription);
         pet_picture = (ImageView) findViewById(R.id.img_petimage);
         btn_yes = (RadioButton) findViewById(R.id.btn_yes);
         btn_no = (RadioButton) findViewById(R.id.btn_no);
+       // pet_female = (RadioButton)findViewById(R.id.btn_female);
+       // pet_male = (RadioButton)findViewById(R.id.btn_male);
+
+
 
 
         upload_pet = (Button) findViewById(R.id.btn_uploadForAdoption);
