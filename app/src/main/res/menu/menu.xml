@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/menuHome"
+        android:title="Home" />
+    <item
+        android:id="@+id/menuSearch"
+        android:title="Search" />
+    <item
+        android:id="@+id/menuAddPet"
+        android:title="Add Pet" />
+
+    <item
+        android:id="@+id/menuDonate"
+        android:title="Donate Now!" />
+
+    <item
+        android:id="@+id/menuFavorites"
+        android:title="Favorites" />
+
+
+</menu>

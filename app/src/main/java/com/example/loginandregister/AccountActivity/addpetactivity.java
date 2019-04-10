@@ -7,6 +7,10 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,10 +56,59 @@ public class addpetactivity extends AppCompatActivity {
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     private String UID = currentUser.getUid();
 
+//Nav bar menu/////////////////
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater= getMenuInflater();
+        menuInflater.inflate(R.menu.menu,menu);
+        return true;
+}
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+
+            case R.id.menuHome:
+                startActivity(new Intent(addpetactivity.this, Profile.class));
+                break;
+
+            case R.id.menuSearch:
+                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menuAddPet:
+                Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menuDonate:
+                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menuFavorites:
+                Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
+                break;
+
+
+
+        }
+        return true;
+    }
+  ////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addpetactivity);
+
+        //toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //setting the title
+        toolbar.setTitle("ResQpet");
+
+        //placing toolbar in place of actionbar
+        setSupportActionBar(toolbar);
 
         FirebaseApp.initializeApp(this);
         databasepets = FirebaseDatabase.getInstance().getReference("pets");
