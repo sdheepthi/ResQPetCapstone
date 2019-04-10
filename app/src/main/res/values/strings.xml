@@ -39,7 +39,7 @@
 
 
     <array name="catbreed">
-        <item> Breed</item>
+        <item>Breed</item>
         <item>Unknown</item>
         <item>Abyssinian</item>
         <item>American Curl</item>
@@ -111,5 +111,11 @@
         <item>York Chocolate</item>
     </array>
 
+    <array name="pet_age">
+        <item>0-3</item>
+        <item>4-6</item>
+        <item>7-10</item>
+        <item>11 and above</item>
+    </array>
 
 </resources>
