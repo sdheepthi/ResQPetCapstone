@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AccountActivity.addpetactivity">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="23dp"
         android:background="#ffffff"
         tools:layout_editor_absoluteX="222dp"
         tools:layout_editor_absoluteY="0dp">
@@ -16,6 +26,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -26,7 +37,6 @@
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:text="Pet Info"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
@@ -86,14 +96,13 @@
                     android:ems="10"
                     android:hint="Adoption Fee" />
 
-                
+
                 <Spinner
                     android:id="@+id/spr_petage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:entries="@array/age">
-                </Spinner>
+                    android:entries="@array/age"></Spinner>
 
                 <Spinner
                     android:id="@+id/spr_petbreed"
@@ -183,7 +192,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorAccent"
-                    android:text="Finish"
+                    android:text="Post"
                     android:textColor="#ffffff" />
 
             </LinearLayout>
@@ -193,4 +202,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
