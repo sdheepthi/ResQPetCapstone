@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/PartyTheme">
+        <activity android:name=".AccountActivity.PaymentActivity" />
         <activity android:name=".AccountActivity.addpetactivity" />
         <activity android:name=".AccountActivity.Profile" />
         <activity android:name=".AccountActivity.searchpage"/>

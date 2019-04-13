@@ -86,6 +86,13 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Profile.this, PaymentActivity.class));
+            }
+        });
+
 
     }
 }
