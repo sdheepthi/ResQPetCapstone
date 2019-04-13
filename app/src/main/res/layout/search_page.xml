@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountActivity.addpetactivity">
+    tools:context=".AccountActivity.searchpage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,14 +47,14 @@
                         android:layout_marginLeft="100dp"
                         android:layout_weight="1"
                         android:text="Dog"
-                        android:id="@+id/txt_pettypedog"/>
+                        android:id="@+id/radio_pettypedog"/>
 
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Cat"
-                        android:id="@+id/txt_pettypecat"/>
+                        android:id="@+id/radio_pettypecat"/>
 
                 </RadioGroup>
 
@@ -67,14 +67,15 @@
                     android:entries="@array/pet_age">
                 </Spinner>
 
-                <Spinner
-                    android:id="@+id/spr_petbreed"
+                <EditText
+                    android:id="@+id/txt_petbreed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:entries="@array/catbreed">
+                    android:hint="pet breed"
+                   >
 
-                </Spinner>
+                </EditText>
 
                 <LinearLayout
                     android:layout_width="match_parent"

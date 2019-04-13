@@ -34,15 +34,16 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Date;
 
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
 
 public class addpetactivity extends AppCompatActivity {
 
-    private EditText pet_name, pet_age, pet_breed, pet_description;
-    private Spinner pet_gender;
-    private RadioButton btn_yes, btn_no;
+    private EditText pet_name, pet_description;
+    private Spinner pet_age, pet_breed;
+    private RadioButton btn_yes, btn_no, male, female;
 
     private ImageView pet_picture;
     private Button upload_pet;
@@ -78,7 +79,8 @@ public class addpetactivity extends AppCompatActivity {
                 break;
 
             case R.id.menuAddPet:
-                Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(addpetactivity.this, addpetactivity.class));
+                //Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.menuDonate:
@@ -116,15 +118,15 @@ public class addpetactivity extends AppCompatActivity {
         userpetsDB = FirebaseDatabase.getInstance().getReference("userpets");
 
         pet_name = (EditText) findViewById(R.id.txt_petname);
-        //pet_age = (EditText) findViewById(R.id.txt_petage);
-        //pet_breed = (Spinner) findViewById(R.id.spr_petbreed);
-        //pet_gender = (Spinner) findViewById(R.id.spr_petgender);
+        pet_age = (Spinner) findViewById(R.id.spr_petage);
+        pet_breed = (Spinner) findViewById(R.id.spr_petbreed);
+//        pet_gender = (Spinner) findViewById(R.id.spr_petgender);
         pet_description = (EditText) findViewById(R.id.txt_petDescription);
         pet_picture = (ImageView) findViewById(R.id.img_petimage);
         btn_yes = (RadioButton) findViewById(R.id.btn_yes);
         btn_no = (RadioButton) findViewById(R.id.btn_no);
-       // pet_female = (RadioButton)findViewById(R.id.btn_female);
-       // pet_male = (RadioButton)findViewById(R.id.btn_male);
+        female = (RadioButton)findViewById(R.id.btn_female);
+        male = (RadioButton)findViewById(R.id.btn_male);
 
 
 
@@ -136,6 +138,8 @@ public class addpetactivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent();
                 // Show only images, no videos or anything else
+
+//                var uploadTask = storageRef.child('images/' + new Date().getTime() + file.name).put(file, metadata);
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 // Always show the chooser (if there are multiple options available)
@@ -198,10 +202,14 @@ public class addpetactivity extends AppCompatActivity {
     private void registerPet()
     {
         final String petname = pet_name.getText().toString().trim();
-        final String petage = pet_age.getText().toString().trim();
-        final String petbreed = pet_breed.getText().toString().trim();
+        final String petage = pet_age.getSelectedItem().toString();
+        final String petbreed = pet_breed.getSelectedItem().toString();
         final String petdescription = pet_description.getText().toString().trim();
-        final String petgender = pet_gender.getSelectedItem().toString();
+        final String petgender;
+        if(male.isChecked())
+            petgender ="male";
+        else
+            petgender = "female";
         boolean isValid=false;
         if(petname.isEmpty())
         {
@@ -235,8 +243,9 @@ public class addpetactivity extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             byte[] data = bytes.toByteArray();
             String id = databasepets.push().getKey();
+//            var uploadTask = storageRef.child('images/' + new Date().getTime() + file.name).put(file, metadata);
 
-            petStorage.child("pets").putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            petStorage.child("pets"+ id).putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     String url = petStorage.getDownloadUrl().toString();

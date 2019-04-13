@@ -32,9 +32,11 @@ public class Profile extends AppCompatActivity {
             case R.id.menuHome:
                 startActivity(new Intent(Profile.this, Profile.class));
                 break;
-
-            case R.id.menuSearch:
-                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+            case R.id.menuSearch: {
+               Intent intent = new Intent(Profile.this, searchpage.class);
+                startActivity(intent);
+            }
                 break;
 
             case R.id.menuAddPet:
@@ -75,6 +77,12 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this, addpetactivity.class));
+            }
+        });
+        searchPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Profile.this, searchpage.class));
             }
         });
 

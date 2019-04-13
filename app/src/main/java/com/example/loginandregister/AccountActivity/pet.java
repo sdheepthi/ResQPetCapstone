@@ -16,6 +16,8 @@ public class pet {
         this.vaccination = vaccination;
     }
 
+    public pet() {
+    }
 
     public String getPetID() {
         return petID;
@@ -80,4 +82,10 @@ public class pet {
     public void setVaccination(boolean vaccination) {
         this.vaccination = vaccination;
     }
+
+    public String DownloadURL(String id)
+    {
+        return "image/"+id;
+    }
+
 }

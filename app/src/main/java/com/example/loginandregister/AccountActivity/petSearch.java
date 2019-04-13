@@ -3,25 +3,25 @@ package com.example.loginandregister.AccountActivity;
 import android.net.Uri;
 import android.widget.Button;
 
-public class pet_adapter {
+public class petSearch {
 
     private String pet_name, pet_age, pet_breed;
     private Uri filePath;
-    private Button favourite;
+//    private Button favourite;
 
-    public pet_adapter() {
+    public petSearch() {
     }
 
-    public pet_adapter(Button favourite) {
-        this.favourite = favourite;
-    }
+//    public petSearch(Button favourite) {
+//        this.favourite = favourite;
+//    }
 
-    public pet_adapter(String pet_name, String pet_age, String pet_breed, Uri filePath, Button favourite) {
+    public petSearch(String pet_name, String pet_age, String pet_breed, Uri filePath, Button favourite) {
         this.pet_name = pet_name;
         this.pet_age = pet_age;
         this.pet_breed = pet_breed;
         this.filePath = filePath;
-        this.favourite = favourite;
+//        this.favourite = favourite;
     }
 
     public String getPet_name() {
@@ -40,7 +40,7 @@ public class pet_adapter {
         return filePath;
     }
 
-    public Button getFavourite() {
-        return favourite;
-    }
+//    public Button getFavourite() {
+//        return favourite;
+//    }
 }
