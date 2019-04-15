@@ -30,7 +30,7 @@ public class SignupActivity extends AppCompatActivity  {
 
     private EditText fname, lname, email, phno, addrl1, addrl2, pwd,postal, state;
     private ProgressBar progressBar;
-    private  Button signUpButton;
+    private  Button signUpButton, btnResetPassword, btnSignIn;
     private FirebaseAuth mAuth;
 
     DatabaseReference databaseUsers;
@@ -53,7 +53,24 @@ public class SignupActivity extends AppCompatActivity  {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         signUpButton = (Button) findViewById(R.id.sign_up_button);
+        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
+        btnSignIn = (Button) findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
+
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
+            }
+        });
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -271,7 +288,7 @@ public class SignupActivity extends AppCompatActivity  {
 //                finish();
 //            }
 //        });
-//
+
 //        btnSignUp.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

@@ -20,8 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/border">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView2"
@@ -62,7 +61,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:entries="@array/age">
                 </Spinner>
 
@@ -71,7 +69,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:entries="@array/catbreed">
 
                 </Spinner>
@@ -113,7 +110,6 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="10dp"
                     android:background="@color/colorAccent"
