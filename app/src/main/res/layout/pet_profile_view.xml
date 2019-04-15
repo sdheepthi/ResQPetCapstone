@@ -8,16 +8,20 @@ android:background="#ffffff">
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/img_petimage"
-                android:layout_width="150dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:background="@drawable/petbackgrounf" />
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
+
+
 
         </ScrollView>
     </LinearLayout>

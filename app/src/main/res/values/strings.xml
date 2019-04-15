@@ -32,7 +32,7 @@
     <string name="email_id">Email ID</string>
 
     <array name="petgender">
-    <item>Pet gender</item>
+    <item>Gender</item>
     <item>Male</item>
     <item>Female</item>
     </array>

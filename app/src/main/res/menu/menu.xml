@@ -20,5 +20,9 @@
         android:id="@+id/menuFavorites"
         android:title="Favorites" />
 
+    <item
+        android:id="@+id/menuLogout"
+        android:title="Logout" />
+
 
 </menu>
