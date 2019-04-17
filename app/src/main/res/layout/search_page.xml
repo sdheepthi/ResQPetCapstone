@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AccountActivity.addpetactivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff"
+        android:layout_below="@+id/toolbar"
         tools:layout_editor_absoluteX="222dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -26,7 +34,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:layout_weight="1"
                     android:text="Filter your results"
                     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
@@ -41,6 +49,7 @@
 
 
                     <RadioButton
+                        android:id="@+id/radio_pettypedog"
                         android:layout_width="14dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="100dp"
@@ -48,6 +57,7 @@
                         android:text="Dog" />
 
                     <RadioButton
+                        android:id="@+id/radio_pettypecat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -64,14 +74,16 @@
                     android:entries="@array/age">
                 </Spinner>
 
-                <Spinner
-                    android:id="@+id/spr_petbreed"
+                <EditText
+                    android:id="@+id/txt_petbreed"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp"
-                    android:entries="@array/catbreed">
-
-                </Spinner>
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Breed" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,6 +120,7 @@
 
 
                 <Button
+                    android:id="@+id/btn_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -123,4 +136,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
