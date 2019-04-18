@@ -42,8 +42,7 @@ import static android.widget.Toast.makeText;
 public class addpetactivity extends AppCompatActivity {
 
     private EditText pet_name, pet_description;
-    private Spinner pet_age;
-    private EditText pet_breed;
+    private Spinner pet_age, pet_breed;
     private RadioButton btn_yes, btn_no, male, female;
 
     private ImageView pet_picture;
@@ -120,8 +119,8 @@ public class addpetactivity extends AppCompatActivity {
 
         pet_name = (EditText) findViewById(R.id.txt_petname);
         pet_age = (Spinner) findViewById(R.id.spr_petage);
-        pet_breed = (EditText) findViewById(R.id.txt_petbreed);
-//      pet_gender = (Spinner) findViewById(R.id.spr_petgender);
+        pet_breed = (Spinner) findViewById(R.id.spr_petbreed);
+//        pet_gender = (Spinner) findViewById(R.id.spr_petgender);
         pet_description = (EditText) findViewById(R.id.txt_petDescription);
         pet_picture = (ImageView) findViewById(R.id.img_petimage);
         btn_yes = (RadioButton) findViewById(R.id.btn_yes);
@@ -204,7 +203,7 @@ public class addpetactivity extends AppCompatActivity {
     {
         final String petname = pet_name.getText().toString().trim();
         final String petage = pet_age.getSelectedItem().toString();
-        final String petbreed = pet_breed.getText().toString();
+        final String petbreed = pet_breed.getSelectedItem().toString();
         final String petdescription = pet_description.getText().toString().trim();
         final String petgender;
         if(male.isChecked())

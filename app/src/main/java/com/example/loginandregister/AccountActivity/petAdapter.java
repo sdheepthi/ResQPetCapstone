@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.loginandregister.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

@@ -53,16 +53,16 @@ public class SignupActivity extends AppCompatActivity  {
         progressBar = findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         signUpButton = (Button) findViewById(R.id.sign_up_button);
-        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
+//        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
         btnSignIn = (Button) findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
 
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
-            }
-        });
+//        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
+//            }
+//        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
