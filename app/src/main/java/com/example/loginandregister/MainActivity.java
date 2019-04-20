@@ -17,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginandregister.AccountActivity.LoginActivity;
+import com.example.loginandregister.AccountActivity.Profile;
 import com.example.loginandregister.AccountActivity.SignupActivity;
+import com.example.loginandregister.AccountActivity.addpetactivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth auth;
 
 
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -41,10 +46,52 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+
+            case R.id.menuHome:
+                startActivity(new Intent(MainActivity.this, Profile.class));
+                break;
+
+            case R.id.menuSearch:
+                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menuAddPet:
+                startActivity(new Intent(MainActivity.this, addpetactivity.class));
+                //Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menuDonate:
+                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menuFavorites:
+                Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
+                break;
+
+
+
+        }
+        return true;
+    }
+    ////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //setting the title
+        toolbar.setTitle("ResQpet");
+
+        //placing toolbar in place of actionbar
+        setSupportActionBar(toolbar);
 
 //get firebase auth instance
         auth = FirebaseAuth.getInstance();

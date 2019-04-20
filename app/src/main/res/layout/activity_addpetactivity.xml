@@ -44,8 +44,8 @@
 
                 <ImageView
                     android:id="@+id/img_petimage"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
                     android:background="@drawable/petbackgrounf" />
 
@@ -96,22 +96,34 @@
                     android:ems="10"
                     android:hint="Adoption Fee" />
 
+                <EditText
+                    android:id="@+id/txt_petbreed"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:hint="Breed" />
+
 
                 <Spinner
                     android:id="@+id/spr_petage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
+                    android:hint="Breed"
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
                     android:entries="@array/age"></Spinner>
 
                 <Spinner
-                    android:id="@+id/spr_petbreed"
+                    android:id="@+id/spr_petgender"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:entries="@array/catbreed">
-
-                </Spinner>
+                    style="@style/Widget.AppCompat.Spinner.Underlined"
+                    android:entries="@array/petgender"></Spinner>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -142,32 +154,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="No" />
-
-                    </RadioGroup>
-
-
-                    <RadioGroup
-                        android:layout_width="134dp"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Gender" />
-
-                        <RadioButton
-                            android:id="@+id/btn_male"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Male" />
-
-                        <RadioButton
-                            android:id="@+id/btn_female"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Female" />
 
                     </RadioGroup>
 

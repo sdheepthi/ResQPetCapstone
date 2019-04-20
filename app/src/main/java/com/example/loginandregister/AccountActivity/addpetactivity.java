@@ -20,7 +20,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.loginandregister.R;
-import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +33,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
@@ -59,7 +57,6 @@ public class addpetactivity extends AppCompatActivity {
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     private String UID = currentUser.getUid();
 
-    String fileurl;
 //Nav bar menu/////////////////
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,13 +113,14 @@ public class addpetactivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FirebaseApp.initializeApp(this);
-        databasepets = FirebaseDatabase.getInstance().getReference("pets"); //was pets to be changed back
+        databasepets = FirebaseDatabase.getInstance().getReference("pets");
         petStorage = FirebaseStorage.getInstance().getReference("petimages");
         userpetsDB = FirebaseDatabase.getInstance().getReference("userpets");
 
         pet_name = (EditText) findViewById(R.id.txt_petname);
         pet_age = (Spinner) findViewById(R.id.spr_petage);
         pet_breed = (Spinner) findViewById(R.id.spr_petbreed);
+//        pet_gender = (Spinner) findViewById(R.id.spr_petgender);
         pet_description = (EditText) findViewById(R.id.txt_petDescription);
         pet_picture = (ImageView) findViewById(R.id.img_petimage);
         btn_yes = (RadioButton) findViewById(R.id.btn_yes);
@@ -141,6 +139,7 @@ public class addpetactivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 // Show only images, no videos or anything else
 
+//                var uploadTask = storageRef.child('images/' + new Date().getTime() + file.name).put(file, metadata);
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 // Always show the chooser (if there are multiple options available)
@@ -163,7 +162,41 @@ public class addpetactivity extends AppCompatActivity {
 
 
 
-
+//    private boolean validate(){
+//        final String petname = pet_name.getText().toString().trim();
+//       final String petage = pet_age.getText().toString().trim();
+//       final String petbreed = pet_breed.getText().toString().trim();
+//       final String petdescription = pet_description.getText().toString().trim();
+//        final String petgender = pet_gender.getSelectedItem().toString();
+//
+//        boolean isValid=false;
+//        if(petname.isEmpty())
+//       {
+//           makeText(getApplicationContext(), "Enter pet Name!", LENGTH_SHORT).show();
+////           return;
+//       }
+//       else if(petage.isEmpty())
+//       {
+//           makeText(getApplicationContext(), "Enter pet age!", LENGTH_SHORT).show();
+////           return;
+//       }
+//       else if(petbreed.isEmpty())
+//       {
+//           makeText(getApplicationContext(), "Enter pet breed!", LENGTH_SHORT).show();
+////           return;
+//       }
+//       else if(petgender.isEmpty()){
+//            makeText(getApplicationContext(), "Enter pet breed!", LENGTH_SHORT).show();
+//        }
+//       else if(petdescription.isEmpty())
+//       {
+//           makeText(getApplicationContext(), "Describe your pet!", LENGTH_SHORT).show();
+////           return;
+//       }
+//      else if(uri == null)
+//           Toast.makeText(this,"Please select pet image",Toast.LENGTH_LONG).show();
+//        return isValid;
+//    }
 
 
     private void registerPet()
@@ -209,16 +242,13 @@ public class addpetactivity extends AppCompatActivity {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             byte[] data = bytes.toByteArray();
-            final String pid = databasepets.push().getKey();
+            String id = databasepets.push().getKey();
 //            var uploadTask = storageRef.child('images/' + new Date().getTime() + file.name).put(file, metadata);
 
-            petStorage.child(pid).putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            petStorage.child("pets"+ id).putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-
-                    final String url = petStorage.getDownloadUrl().toString(); // this is original
-
+                    String url = petStorage.getDownloadUrl().toString();
                     String id = databasepets.push().getKey();
                     final String upID = userpetsDB.push().getKey();
                     boolean vac = false;
@@ -226,7 +256,7 @@ public class addpetactivity extends AppCompatActivity {
                         vac = true;
                     else if (btn_no.isChecked())
                         vac = false;
-                    pet animal = new pet(pid, petname, petage, petbreed, petdescription, url, petgender, vac);
+                    pet animal = new pet(id, petname, petage, petbreed, petdescription, url, petgender, vac);
                     final userpets user_pets = new userpets(upID, UID, id, "available", "upload");
                     databasepets.child(id).setValue(animal).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -269,10 +299,11 @@ public class addpetactivity extends AppCompatActivity {
 
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), uri);
-
+                // Log.d(TAG, String.valueOf(bitmap));
                 Toast.makeText(this, "hey you selected image" + bitmap, Toast.LENGTH_SHORT).show();
                 pet_picture.setImageBitmap(bitmap);
-
+                //ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                //imageView.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }
