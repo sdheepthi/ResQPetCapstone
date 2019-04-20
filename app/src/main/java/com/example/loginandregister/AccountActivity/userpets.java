@@ -10,8 +10,8 @@ public class userpets {
         this.p_uID = p_uID;
         this.uid = uid;
         this.pid = pid;
-        status = status;
-        flag = flag;
+        this.status = status;
+        this.flag = flag;
     }
 
     public String getP_uID() {
@@ -53,6 +53,7 @@ public class userpets {
     public void setFlag(String flag) {
         this.flag = flag;
     }
+
 //    public String getP_uID() {
 //        return p_uID;
 //    }

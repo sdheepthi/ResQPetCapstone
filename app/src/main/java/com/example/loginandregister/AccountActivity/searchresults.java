@@ -28,13 +28,6 @@ import java.util.List;
 
 public class searchresults extends AppCompatActivity {
 
-//    Intent intent = getIntent().getExtras();
-//    Bundle extras = getIntent().getExtras();
-//    String pet_type = extras.getString("PetType");
-//    String pet_age = extras.getString("petage");
-//    String pet_breed = extras.getString("PetBreed");
-//    String pet_gender = extras.getString("Petgender");
-
     private RecyclerView recyclerView;
     private  petAdapter adapter;
     private List<pet> petlist; // was petsearch
@@ -58,7 +51,7 @@ public class searchresults extends AppCompatActivity {
         String pet_type = extras.getString("PetType");
         String pet_age = extras.getString("petage");
         String pet_breed = extras.getString("PetBreed");
-        String pet_gender = extras.getString("Petgender");
+        String pet_gender = extras.getString("gender");
 
         view = (Button) findViewById(R.id.rec_btnView);
         fav = (Button) findViewById(R.id.rec_btnfav);
@@ -73,43 +66,22 @@ public class searchresults extends AppCompatActivity {
 
         petlist =new ArrayList<>();
         availList = new ArrayList<>();
-//        petID = new ArrayList<>();
         pid = new HashSet<String>();
-//        adapter = new petAdapter(this, petlist);
-//        recyclerView.setAdapter(adapter);
+        adapter = new petAdapter(this, petlist);
+        recyclerView.setAdapter(adapter);
 
 
 
 
 
-//        dbpets = FirebaseDatabase.getInstance().getReference("pets");
         dbuserpets = FirebaseDatabase.getInstance().getReference("userpers");
         dbpets = FirebaseDatabase.getInstance().getReference("pets");
+        Query findpetId, genpetList;
 
-//        if(pet_type==null && pet_age=="0-3" && pet_breed=="" && pet_gender==null)
-//        {
-            //display top 10 pets availabel
-//            Query top = FirebaseDatabase.getInstance().getReference("userpets")
-//                    .orderByChild("status").equalTo("available").limitToFirst(10);
-//            top.addListenerForSingleValueEvent(userpetsListener);
-//
-//
-//            //petID = availList.get(availList.indexOf());
-//           ;
-//           for(userpets x: availList)
-//           {
-//               pid.add(x.pid);
-//           }
-//           Query findPet;
-//
-//           for(String s:pid) {
-               Query findPet = FirebaseDatabase.getInstance().getReference("pets").limitToFirst(6);
-//                       .orderByChild("petID").equalTo();
-               findPet.addListenerForSingleValueEvent(petlistListner);
+        Query top = FirebaseDatabase.getInstance().getReference("pets").orderByChild("petgender").equalTo("male").orderByChild("petage").equalTo("0-1 years");
+        top.addListenerForSingleValueEvent(petlistListner);
 
 
-         //  }
-//        }
 
     }
 
@@ -123,7 +95,6 @@ public class searchresults extends AppCompatActivity {
                     availList.add(avai);
 
                 }
-//                adapter.notifyDataSetChanged();
             }
         }
 
@@ -141,13 +112,9 @@ public class searchresults extends AppCompatActivity {
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
                    pet pets = snapshot.getValue(pet.class) ; //was petsearch
                    petlist.add(pets);
-//                    adapter.notifyDataSetChanged();
                 }
-//                adapter.notifyDataSetChanged();
-                adapter = new petAdapter(searchresults.this, petlist);
-                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
-//            adapter.notifyDataSetChanged();
 
         }
 

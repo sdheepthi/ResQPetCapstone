@@ -55,19 +55,19 @@ public class searchpage extends AppCompatActivity {
     private void sendResults()
     {
         String pettype = null;
-        String petbreed = null;
-        petbreed = breed.getText().toString().trim();
-        String petgender = null;
+//        String petbreed = null;
+        String petbreed = breed.getText().toString().trim();
+        String petGender = null;
         String petage = null;
         petage = pet_age.getSelectedItem().toString();
 
         if(male.isChecked())
         {
-            petgender = "male";
+            petGender = "male";
         }
         else if(female.isChecked())
         {
-            petgender = "female";
+            petGender = "female";
         }
         if(dog.isChecked())
              pettype = "dog";
@@ -80,7 +80,7 @@ public class searchpage extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("Pettype", pettype);
         bundle.putString("PetBreed", petbreed);
-        bundle.putString("Petgender",petgender);
+        bundle.putString("gender",petGender);
         bundle.putString("petage", petage);
         intent.putExtras(bundle);
         startActivity(intent);
