@@ -2,10 +2,13 @@ package com.example.loginandregister.AccountActivity;
 
 public class pet {
 
-    public String petID, petname, petage, petBreed, petdesc, image, petgender;
+    public String petID, petname, petage, petBreed, petdesc, image, petgender, type, fee;
     public boolean vaccination;
+    // this is combined fields for querying
 
-    public pet(String petID, String petname, String petage, String petBreed, String petdesc, String image, String petgender, boolean vaccination) {
+    public String type_age, type_gender, age_gender, tp_ag_ge;
+
+    public pet(String petID, String petname, String petage, String petBreed, String petdesc, String image, String petgender, boolean vaccination, String type, String fee) {
         this.petID = petID;
         this.petname = petname;
         this.petage = petage;
@@ -14,8 +17,29 @@ public class pet {
         this.image = image;
         this.petgender = petgender;
         this.vaccination = vaccination;
+        this.fee = fee;
+        this.type = type;
+            this.type_age = type+petage;
+            this.type_gender = type+petgender;
+            this.age_gender = petage+petgender;
+            this.tp_ag_ge = type+petage+petgender;
 
+        }
 
+    public String getFee() {
+        return fee;
+    }
+
+    public void setFee(String fee) {
+        this.fee = fee;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public pet() {

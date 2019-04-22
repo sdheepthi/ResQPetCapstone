@@ -1,19 +1,25 @@
 package com.example.loginandregister.AccountActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.loginandregister.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static android.widget.Toast.*;
 
 public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 
@@ -26,6 +32,7 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
         this.mCxt = mCxt;
         this.petList = petList;
     }
+
 
     @Override
     public PetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -40,11 +47,11 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(PetViewHolder holder, int position) {
+    public void onBindViewHolder(final PetViewHolder holder, int position) {
 
         // getting petPosition
 
-        pet pets = petList.get(position); //was petsearch
+        final pet pets = petList.get(position); //was petsearch
 
         // bind the respective text to the view for display
         holder.petName.setText(pets.petname);
@@ -52,9 +59,30 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
         holder.petBreed.setText(pets.petBreed);
 //      holder.petImg.setURI(mCtx.getResources()) something....
 //        Picasso.get().load(pets.getImage()).into(petImg);
-        Glide.with(mCxt).load("petimages/pets").into(holder.petImg);
+//        Glide.with(mCxt).load("petimages/pets").into(holder.petImg);
 
-//        Picasso.get().load("com.google.android.gms.tasks.zzu@5d446f5").fit().into(holder.petImg);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                        Intent intent = new Intent(mCxt, petprofileview.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("petid",pets.getPetID());
+
+                        intent.putExtras(bundle);
+                        mCxt.startActivity(intent);
+                                        }
+
+
+        });
+
+        Picasso picassoInstance = new Picasso.Builder(mCxt)
+                .addRequestHandler(new FirebaseRequestHandler())
+                .build();
+
+        picassoInstance.load("gs://resqpet-a4760.appspot.com/petimages/pets"+pets.getPetID())
+                .fit().centerInside()
+                .into(holder.petImg);
         }
     @Override
     public int getItemCount() {
@@ -66,7 +94,8 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 
         public TextView petName, petAge, petBreed;
         public ImageView petImg;
-
+        public Button view;
+        public Button fav;
         public PetViewHolder( View itemView) {
             super(itemView);
 
@@ -74,8 +103,15 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
             petAge = itemView.findViewById(R.id.rec_petAge);
             petBreed = itemView.findViewById(R.id.rec_petBreed);
             petImg = itemView.findViewById(R.id.rec_petimg);
+            view = itemView.findViewById(R.id.rec_btnView);
+            fav = itemView.findViewById(R.id.rec_btnfav);
+
+
 
         }
+
+
+
     }
 
 

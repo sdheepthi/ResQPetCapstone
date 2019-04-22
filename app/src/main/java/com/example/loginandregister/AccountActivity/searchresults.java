@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 
 import com.example.loginandregister.R;
@@ -48,10 +49,11 @@ public class searchresults extends AppCompatActivity {
         setContentView(R.layout.searchresults);
         FirebaseApp.initializeApp(this);
         Bundle extras = getIntent().getExtras();
-        String pet_type = extras.getString("PetType");
-        String pet_age = extras.getString("petage");
-        String pet_breed = extras.getString("PetBreed");
-        String pet_gender = extras.getString("gender");
+        final String pet_type = extras.getString("Pettype");
+        final String pet_age = extras.getString("petage");
+        final String pet_breed = extras.getString("PetBreed");
+        final String pet_gender = extras.getString("gender");
+//        final String pet_type = extras.getString("pettype");
 
         view = (Button) findViewById(R.id.rec_btnView);
         fav = (Button) findViewById(R.id.rec_btnfav);
@@ -78,8 +80,49 @@ public class searchresults extends AppCompatActivity {
         dbpets = FirebaseDatabase.getInstance().getReference("pets");
         Query findpetId, genpetList;
 
-        Query top = FirebaseDatabase.getInstance().getReference("pets").orderByChild("petgender").equalTo("male").orderByChild("petage").equalTo("0-1 years");
-        top.addListenerForSingleValueEvent(petlistListner);
+        if(!pet_type.isEmpty() && !pet_age.isEmpty() && !pet_gender.isEmpty())
+        {
+            genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("tp_ag_ge").equalTo(pet_type+pet_age+pet_gender);
+            genpetList.addListenerForSingleValueEvent(petlistListner);
+        }
+        else if(!pet_type.isEmpty() && !pet_age.isEmpty() && pet_gender.isEmpty())
+        {
+            genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("type_age").equalTo(pet_type+pet_age);
+            genpetList.addListenerForSingleValueEvent(petlistListner);
+        }
+        else if(!pet_type.isEmpty() && pet_age.isEmpty() && !pet_gender.isEmpty())
+        {
+            genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("type_gender").equalTo(pet_type+pet_gender);
+            genpetList.addListenerForSingleValueEvent(petlistListner);
+        }
+        else if(pet_type.isEmpty() && !pet_age.isEmpty() && !pet_gender.isEmpty())
+        {
+            genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("age_gender").equalTo(pet_age+pet_gender);
+            genpetList.addListenerForSingleValueEvent(petlistListner);
+        }
+        else if(!pet_type.isEmpty() && pet_age.isEmpty() && pet_gender.isEmpty())
+        {
+            genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("type").equalTo(pet_type);
+            genpetList.addListenerForSingleValueEvent(petlistListner);
+        }
+        else if(pet_type.isEmpty() && !pet_age.isEmpty() && pet_gender.isEmpty())
+        {
+            genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("petage").equalTo(pet_age);
+            genpetList.addListenerForSingleValueEvent(petlistListner);
+        }
+        else if(pet_type.isEmpty() && pet_age.isEmpty() && !pet_gender.isEmpty())
+        {
+            genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("petgender").equalTo(pet_gender);
+            genpetList.addListenerForSingleValueEvent(petlistListner);
+        }
+        else
+        {
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("pets");
+            ref.addListenerForSingleValueEvent(petlistListner);
+        }
+
+//        genpetList = FirebaseDatabase.getInstance().getReference("pets").orderByChild("petgender").equalTo("male").orderByChild("petage").equalTo("0-1 years");
+//        genpetList.addListenerForSingleValueEvent(petlistListner);
 
 
 
@@ -103,6 +146,8 @@ public class searchresults extends AppCompatActivity {
 
         }
     };
+
+
 
     ValueEventListener petlistListner = new ValueEventListener() {
         @Override

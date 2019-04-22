@@ -112,25 +112,28 @@ public class searchpage extends AppCompatActivity {
 
     private void sendResults()
     {
-        String pettype = null;
-//        String petbreed = null;
+        String pettype;
+        if(dog.isChecked())
+            pettype = "dog";
+        else if(cat.isChecked())
+            pettype = "cat";
+        else
+            pettype="";
         String petbreed = breed.getText().toString().trim();
-        String petGender = null;
-        String petage = null;
-        petage = pet_age.getSelectedItem().toString();
+        String petGender;
+        String petage = pet_age.getSelectedItem().toString();
 
         if(male.isChecked())
         {
-            petGender = "male";
+            petGender = "Male";
         }
         else if(female.isChecked())
         {
-            petGender = "female";
+            petGender = "Female";
         }
-        if(dog.isChecked())
-             pettype = "dog";
-        else if(cat.isChecked())
-            pettype = "cat";
+        else
+            petGender="";
+
 
 //
 

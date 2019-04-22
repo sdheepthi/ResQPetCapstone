@@ -41,9 +41,9 @@ import static android.widget.Toast.makeText;
 
 public class addpetactivity extends AppCompatActivity {
 
-    private EditText pet_name, pet_description;
-    private Spinner pet_age, pet_breed;
-    private RadioButton btn_yes, btn_no, male, female;
+    private EditText pet_name, pet_description,pet_breed, fee;
+    private Spinner pet_age, pet_gender;
+    private RadioButton btn_yes, btn_no, dog, cat; //, male, female;
 
     private ImageView pet_picture;
     private Button upload_pet;
@@ -119,14 +119,17 @@ public class addpetactivity extends AppCompatActivity {
 
         pet_name = (EditText) findViewById(R.id.txt_petname);
         pet_age = (Spinner) findViewById(R.id.spr_petage);
-        pet_breed = (Spinner) findViewById(R.id.spr_petbreed);
-//        pet_gender = (Spinner) findViewById(R.id.spr_petgender);
+        pet_breed = (EditText) findViewById(R.id.txt_petbreed);
+        pet_gender = (Spinner) findViewById(R.id.spr_petgender);
         pet_description = (EditText) findViewById(R.id.txt_petDescription);
         pet_picture = (ImageView) findViewById(R.id.img_petimage);
         btn_yes = (RadioButton) findViewById(R.id.btn_yes);
         btn_no = (RadioButton) findViewById(R.id.btn_no);
-        female = (RadioButton)findViewById(R.id.btn_female);
-        male = (RadioButton)findViewById(R.id.btn_male);
+        dog = (RadioButton) findViewById(R.id.btn_dog);
+        cat = (RadioButton) findViewById(R.id.btn_cat);
+        fee = (EditText) findViewById(R.id.txt_fee);
+//        female = (RadioButton)findViewById(R.id.btn_female);
+//        male = (RadioButton)findViewById(R.id.btn_male);
 
 
 
@@ -162,59 +165,31 @@ public class addpetactivity extends AppCompatActivity {
 
 
 
-//    private boolean validate(){
-//        final String petname = pet_name.getText().toString().trim();
-//       final String petage = pet_age.getText().toString().trim();
-//       final String petbreed = pet_breed.getText().toString().trim();
-//       final String petdescription = pet_description.getText().toString().trim();
-//        final String petgender = pet_gender.getSelectedItem().toString();
-//
-//        boolean isValid=false;
-//        if(petname.isEmpty())
-//       {
-//           makeText(getApplicationContext(), "Enter pet Name!", LENGTH_SHORT).show();
-////           return;
-//       }
-//       else if(petage.isEmpty())
-//       {
-//           makeText(getApplicationContext(), "Enter pet age!", LENGTH_SHORT).show();
-////           return;
-//       }
-//       else if(petbreed.isEmpty())
-//       {
-//           makeText(getApplicationContext(), "Enter pet breed!", LENGTH_SHORT).show();
-////           return;
-//       }
-//       else if(petgender.isEmpty()){
-//            makeText(getApplicationContext(), "Enter pet breed!", LENGTH_SHORT).show();
-//        }
-//       else if(petdescription.isEmpty())
-//       {
-//           makeText(getApplicationContext(), "Describe your pet!", LENGTH_SHORT).show();
-////           return;
-//       }
-//      else if(uri == null)
-//           Toast.makeText(this,"Please select pet image",Toast.LENGTH_LONG).show();
-//        return isValid;
-//    }
-
 
     private void registerPet()
     {
         final String petname = pet_name.getText().toString().trim();
+        final String petbreed = pet_breed.getText().toString().trim();
         final String petage = pet_age.getSelectedItem().toString();
-        final String petbreed = pet_breed.getSelectedItem().toString();
         final String petdescription = pet_description.getText().toString().trim();
-        final String petgender;
-        if(male.isChecked())
-            petgender ="male";
-        else
-            petgender = "female";
+        final String petgender = pet_gender.getSelectedItem().toString();
+        final String petfee = fee.getText().toString().trim();
+        String type = "";
+        if(dog.isChecked())
+            type = "dog";
+        else if(cat.isChecked())
+            type = "cat";
         boolean isValid=false;
+        final String pettype = type;
         if(petname.isEmpty())
         {
             makeText(getApplicationContext(), "Enter pet Name!", LENGTH_SHORT).show();
            return;
+        }
+        else if(petfee.isEmpty())
+        {
+            makeText(getApplicationContext(), "Enter adoption fee!", LENGTH_SHORT).show();
+            return;
         }
         else if(petage.isEmpty())
         {
@@ -238,25 +213,30 @@ public class addpetactivity extends AppCompatActivity {
             Toast.makeText(this, "Please select pet image", Toast.LENGTH_LONG).show();
             return;
         }
+        else if(type.isEmpty())
+        {
+            makeText(getApplicationContext(), "Select pet type!", LENGTH_SHORT).show();
+            return;
+        }
         else {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
             byte[] data = bytes.toByteArray();
-            String id = databasepets.push().getKey();
+            final String id = databasepets.push().getKey();
 //            var uploadTask = storageRef.child('images/' + new Date().getTime() + file.name).put(file, metadata);
 
             petStorage.child("pets"+ id).putBytes(data).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     String url = petStorage.getDownloadUrl().toString();
-                    String id = databasepets.push().getKey();
+//                    String id = databasepets.push().getKey();
                     final String upID = userpetsDB.push().getKey();
                     boolean vac = false;
                     if (btn_yes.isChecked())
                         vac = true;
                     else if (btn_no.isChecked())
                         vac = false;
-                    pet animal = new pet(id, petname, petage, petbreed, petdescription, url, petgender, vac);
+                    pet animal = new pet(id, petname, petage, petbreed, petdescription, url, petgender, vac, pettype, petfee);
                     final userpets user_pets = new userpets(upID, UID, id, "available", "upload");
                     databasepets.child(id).setValue(animal).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
