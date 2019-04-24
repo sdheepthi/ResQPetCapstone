@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary" />
 
-   //Picture/name/and background
+    //Picture/name/and background
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
@@ -30,6 +30,7 @@
             android:layout_centerHorizontal="true">
 
             <ImageView
+                android:id="@+id/rec_petimg"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:adjustViewBounds="true"
@@ -41,6 +42,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/rec_petName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgUser"
@@ -54,15 +56,15 @@
             />
 
     </RelativeLayout>
-///////
+    ///////
 
     /// Bottom two buttons below picture
     <LinearLayout
-                android:id="@+id/favbar"
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/top">
+        android:id="@+id/favbar"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -139,7 +141,7 @@
 
         </RelativeLayout>
 
-</LinearLayout>
+    </LinearLayout>
 
     ////
 
@@ -170,6 +172,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/rec_petBreed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BreedInfo"
@@ -198,6 +201,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/rec_petAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AgeInfo"
@@ -226,6 +230,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="GenderInfo"
@@ -254,6 +259,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/adopt_fee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AdoptionFeeInfo"
@@ -282,6 +288,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/vaccinate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Y/N"
@@ -310,6 +317,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/pet_descrip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DescriptionInfo"

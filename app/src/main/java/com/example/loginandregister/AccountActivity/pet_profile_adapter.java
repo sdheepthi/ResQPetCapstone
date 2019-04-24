@@ -21,14 +21,14 @@ import java.util.List;
 
 import static android.widget.Toast.*;
 
-public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
+public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapter.PetViewHolder> {
 
 
     private Context mCxt; // to inflate the layout
 
     private List<pet> petList; // list of pets was petsearch
 
-    public petAdapter(Context mCxt, List<pet> petList) {// was petsearch
+    public pet_profile_adapter(Context mCxt, List<pet> petList) {// was petsearch
         this.mCxt = mCxt;
         this.petList = petList;
     }
@@ -41,8 +41,8 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 //        LayoutInflater inflater = LayoutInflater.from(mCxt);
 //        View view = inflater.inflate(R.layout.recycler_petview, null);
 
-        View view = LayoutInflater.from(mCxt).inflate(R.layout.recycler_petview,parent,false);
-       PetViewHolder viewHolder = new PetViewHolder(view);
+        View view = LayoutInflater.from(mCxt).inflate(R.layout.pet_profile_view, parent, false);
+        PetViewHolder viewHolder = new PetViewHolder(view);
         return viewHolder;
     }
 
@@ -57,37 +57,19 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
         holder.petName.setText(pets.petname);
         holder.petAge.setText(pets.petage);
         holder.petBreed.setText(pets.petBreed);
-//      holder.petImg.setURI(mCtx.getResources()) something....
-//        Picasso.get().load(pets.getImage()).into(petImg);
-//        Glide.with(mCxt).load("petimages/pets").into(holder.petImg);
-
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                        Intent intent = new Intent(mCxt, petprofileview.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("petid",pets.getPetID());
-                        bundle.putString("petName",pets.getPetname());
-                        bundle.putString("petAge",pets.getPetage());
-                        bundle.putString("petBreed",pets.getPetBreed());
-                        bundle.putString("petGender",pets.getPetgender());
-
-                        intent.putExtras(bundle);
-                        mCxt.startActivity(intent);
-                                        }
-
-
-        });
-
+        holder.petFee.setText(pets.fee);
+        holder.petGender.setText(pets.petgender);
+        holder.petDescrip.setText(pets.petdesc);
+        holder.petVacc.setText(String.valueOf(pets.vaccination));
         Picasso picassoInstance = new Picasso.Builder(mCxt)
                 .addRequestHandler(new FirebaseRequestHandler())
                 .build();
 
-        picassoInstance.load("gs://resqpet-a4760.appspot.com/petimages/pets"+pets.getPetID())
+        picassoInstance.load("gs://resqpet-a4760.appspot.com/petimages/pets" + pets.getPetID())
                 .fit().centerInside()
                 .into(holder.petImg);
-        }
+    }
+
     @Override
     public int getItemCount() {
         return petList.size();
@@ -96,32 +78,32 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 
     public class PetViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView petName, petAge, petBreed;
+        public TextView petName, petAge, petBreed, price,gender, petGender, petFee,petDescrip, petVacc;
         public ImageView petImg;
-        public Button view;
-        public Button fav;
-        public PetViewHolder( View itemView) {
+
+        public PetViewHolder(View itemView) {
             super(itemView);
+
 
             petName = itemView.findViewById(R.id.rec_petName);
             petAge = itemView.findViewById(R.id.rec_petAge);
             petBreed = itemView.findViewById(R.id.rec_petBreed);
             petImg = itemView.findViewById(R.id.rec_petimg);
-            view = itemView.findViewById(R.id.rec_btnView);
-            fav = itemView.findViewById(R.id.rec_btnfav);
-
-
+            petGender = itemView.findViewById(R.id.gender);
+            petFee = itemView.findViewById(R.id.adopt_fee);
+            petDescrip = itemView.findViewById(R.id.pet_descrip);
+            petVacc = itemView.findViewById(R.id.vaccinate);
 
         }
 
 
-
     }
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+
