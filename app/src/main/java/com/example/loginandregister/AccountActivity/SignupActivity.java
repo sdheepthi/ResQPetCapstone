@@ -12,6 +12,7 @@ import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginandregister.MainActivity;

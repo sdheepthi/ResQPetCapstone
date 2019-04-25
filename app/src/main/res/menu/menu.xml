@@ -13,10 +13,6 @@
         android:title="Add Pet" />
 
     <item
-        android:id="@+id/menuDonate"
-        android:title="Donate Now!" />
-
-    <item
         android:id="@+id/menuFavorites"
         android:title="Favorites" />
 
