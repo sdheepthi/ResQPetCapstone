@@ -37,6 +37,13 @@
             android:text="search pet"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="263dp" />
+        <Button
+            android:id="@+id/btn_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View saved pets"
+            tools:layout_editor_absoluteX="143dp"
+            tools:layout_editor_absoluteY="263dp" />
 
         <Button
             android:id="@+id/btn_donation"
@@ -44,8 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="260dp"
             android:text="pay donation"
-            app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="142dp" />
+
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.example.loginandregister.AccountActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +15,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.loginandregister.MainActivity;
 import com.example.loginandregister.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -28,10 +38,19 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 
     private List<pet> petList; // list of pets was petsearch
 
+    public  List<favouritePet> favlist;
+
+    DatabaseReference favdb = FirebaseDatabase.getInstance().getReference("favourites");
+    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+
+
     public petAdapter(Context mCxt, List<pet> petList) {// was petsearch
         this.mCxt = mCxt;
         this.petList = petList;
     }
+
 
 
     @Override
@@ -60,6 +79,26 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 //      holder.petImg.setURI(mCtx.getResources()) something....
 //        Picasso.get().load(pets.getImage()).into(petImg);
 //        Glide.with(mCxt).load("petimages/pets").into(holder.petImg);
+        Query query = FirebaseDatabase.getInstance().getReference("favourites").orderByChild("pid_user").equalTo(pets.petID+user.getEmail());
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()) {
+                  holder.fav.setText("saved");
+                   holder.fav.setEnabled(false);
+                }
+                else {
+                    holder.fav.setText("Favourite");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +113,20 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
                                         }
 
 
+        });
+        holder.fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String id = favdb.push().getKey();
+                favouritePet favPet = new favouritePet(id, user.getEmail(),pets.getPetID(), pets.getPetBreed(), pets.getPetname(), pets.getPetgender(), pets.getPetage());
+                favdb.child(id).setValue(favPet);
+                holder.fav.setText("saved");
+                holder.fav.setEnabled(false);
+
+
+
+            }
         });
 
         Picasso picassoInstance = new Picasso.Builder(mCxt)
@@ -113,6 +166,25 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 
 
     }
+    ValueEventListener petlistListner = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//            favlist.clear();
+            if(dataSnapshot.exists()) {
+                for(DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    favouritePet pets = snapshot.getValue(favouritePet.class) ; //was petsearch
+//                    favlist.add(pets);
+                }
+//                adapter.notifyDataSetChanged();
+            }
+
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+        }
+    };
 
 
 

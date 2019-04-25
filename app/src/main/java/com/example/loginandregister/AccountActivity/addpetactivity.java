@@ -55,6 +55,8 @@ public class addpetactivity extends AppCompatActivity {
     DatabaseReference databasepets;
     DatabaseReference userpetsDB;
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
     private String UID = currentUser.getUid();
 
 //Nav bar menu/////////////////
@@ -75,7 +77,9 @@ public class addpetactivity extends AppCompatActivity {
                 break;
 
             case R.id.menuSearch:
-                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(addpetactivity.this, searchpage.class));
+
                 break;
 
             case R.id.menuAddPet:
@@ -84,7 +88,9 @@ public class addpetactivity extends AppCompatActivity {
                 break;
 
             case R.id.menuDonate:
-                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(addpetactivity.this, PaymentActivity.class));
+
                 break;
 
             case R.id.menuFavorites:

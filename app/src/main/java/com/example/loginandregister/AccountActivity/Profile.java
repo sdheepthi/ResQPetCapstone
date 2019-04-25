@@ -15,7 +15,7 @@ import com.example.loginandregister.R;
 
 public class Profile extends AppCompatActivity {
 
-    private Button addPet, donate, searchPet;
+    private Button addPet, donate, searchPet, fav;
 
 //NAV BAR/////////////////
     @Override
@@ -72,6 +72,7 @@ public class Profile extends AppCompatActivity {
         addPet = (Button) findViewById(R.id.btn_petadd);
         donate = (Button) findViewById(R.id.btn_donation);
         searchPet = (Button) findViewById(R.id.btn_petsearch);
+        fav = (Button) findViewById(R.id.btn_fav);
 
         addPet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +91,13 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Profile.this, PaymentActivity.class));
+            }
+        });
+
+        fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Profile.this, favPage.class));
             }
         });
 
