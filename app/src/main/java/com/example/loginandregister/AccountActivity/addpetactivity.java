@@ -54,6 +54,7 @@ public class addpetactivity extends AppCompatActivity {
     private StorageReference petStorage;
     DatabaseReference databasepets;
     DatabaseReference userpetsDB;
+    private FirebaseAuth auth;
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
     private String UID = currentUser.getUid();
 
@@ -83,15 +84,9 @@ public class addpetactivity extends AppCompatActivity {
                 //Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menuDonate:
-                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
-                break;
-
             case R.id.menuFavorites:
                 Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
                 break;
-
-
 
         }
         return true;

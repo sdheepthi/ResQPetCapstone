@@ -2,6 +2,7 @@ package com.example.loginandregister.AccountActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +17,16 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.loginandregister.R;
 import com.squareup.picasso.Picasso;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import java.util.List;
 
 import static android.widget.Toast.*;
@@ -28,6 +38,11 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
     private ImageView pay, fav;
 
     private List<pet> petList; // list of pets was petsearch
+
+    DatabaseReference favdb = FirebaseDatabase.getInstance().getReference("favourites");
+    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+    FirebaseAuth auth = FirebaseAuth.getInstance();
 
     public pet_profile_adapter(Context mCxt, List<pet> petList) {// was petsearch
         this.mCxt = mCxt;
@@ -63,6 +78,20 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
         holder.petGender.setText(pets.petgender);
         holder.petDescrip.setText(pets.petdesc);
         holder.petVacc.setText(String.valueOf(pets.vaccination));
+
+
+        holder.favButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+                    public void onClick(View v) {
+                String id = favdb.push().getKey();
+                favouritePet favPet = new favouritePet(id, user.getEmail(),pets.petID, pets.petBreed, pets.petname, pets.petgender, pets.petage);
+                favdb.child(id).setValue(favPet);
+                holder.favButton.setEnabled(false);
+                holder.favButton.setBackgroundColor(Color.parseColor("#FF0000"));
+            }
+
+       });
+
         holder.payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,10 +107,13 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
 
 
         });
+
         Picasso picassoInstance = new Picasso.Builder(mCxt)
                 .addRequestHandler(new FirebaseRequestHandler())
                 .build();
-
+        picassoInstance.load("gs://resqpet-a4760.appspot.com/petimages/pets"+pets.getPetID())
+                .fit().centerInside()
+                .into(holder.petImg);
     }
 
     @Override
@@ -93,7 +125,7 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
     public class PetViewHolder extends RecyclerView.ViewHolder {
 
         public TextView petName, petAge, petBreed, price,gender, petGender, petFee,petDescrip, petVacc;
-        public ImageView petImg, payButton;
+        public ImageView petImg, payButton,favButton;
 
         public PetViewHolder(View itemView) {
             super(itemView);
@@ -108,6 +140,7 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
             petDescrip = itemView.findViewById(R.id.pet_descrip);
             petVacc = itemView.findViewById(R.id.vaccinate);
             payButton = itemView.findViewById(R.id.payPet);
+            favButton = itemView.findViewById(R.id.fav);
 
         }
 

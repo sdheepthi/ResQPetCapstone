@@ -9,9 +9,14 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.loginandregister.R;
 import com.google.firebase.FirebaseApp;
@@ -43,6 +48,7 @@ public class petprofileview extends AppCompatActivity {
     // database references
     DatabaseReference dbpets;
     DatabaseReference dbuserpets;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

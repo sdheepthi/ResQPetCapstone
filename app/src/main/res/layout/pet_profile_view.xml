@@ -6,19 +6,11 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary" />
-
    //Picture/name/and background
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:paddingBottom="15dp"
         android:background="@color/colorPrimary">
 
@@ -30,6 +22,7 @@
             android:layout_centerHorizontal="true">
 
             <ImageView
+                android:id="@+id/rec_petimg"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:adjustViewBounds="true"
@@ -41,6 +34,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/rec_petName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgUser"
@@ -82,6 +76,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/fav"
                     android:layout_width="37dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -119,6 +114,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/payPet"
                     android:layout_width="37dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -165,11 +161,42 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="GenderInfo"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="15dp"
+                    android:background="#5e6266" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="Breed"
                     android:textColor="@color/colorAccent"
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/rec_petBreed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="BreedInfo"
@@ -198,6 +225,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/rec_petAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AgeInfo"
@@ -213,34 +241,7 @@
 
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gender"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="13sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="GenderInfo"
-                    android:textColor="#000000"
-                    android:fontFamily="sans-serif-light"
-                    android:textSize="18sp"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="15dp"
-                    android:background="#5e6266"/>
-
-
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -254,6 +255,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/adopt_fee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="AdoptionFeeInfo"
@@ -282,6 +284,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/vaccinate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Y/N"
@@ -310,6 +313,7 @@
                     android:textSize="13sp"/>
 
                 <TextView
+                    android:id="@+id/pet_descrip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="DescriptionInfo"
