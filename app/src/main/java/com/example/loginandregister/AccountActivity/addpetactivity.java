@@ -90,7 +90,9 @@ public class addpetactivity extends AppCompatActivity {
             case R.id.menuFavorites:
                 Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
                 break;
-
+            case R.id.menuLogout:
+                startActivity(new Intent(addpetactivity.this, LoginActivity.class));
+                break;
 
 
         }

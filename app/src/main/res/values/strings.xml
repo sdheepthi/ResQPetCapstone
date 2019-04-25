@@ -34,15 +34,15 @@
     <string name="email_id">Email ID</string>
 
     <array name="petgender">
-    <item>Gender</item>
-    <item>Male</item>
-    <item>Female</item>
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
     </array>
 
     <array name="age">
         <item></item>
-        <item> 0-1 years</item>
-        <item> 1-3 years</item>
+        <item>0-1 years</item>
+        <item>1-3 years</item>
         <item>3-7 years</item>
         <item>7+ years</item>
     </array>
