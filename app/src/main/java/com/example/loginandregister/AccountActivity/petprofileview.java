@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.loginandregister.R;
 import com.google.firebase.FirebaseApp;
@@ -31,6 +32,7 @@ import java.util.List;
 public class petprofileview extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private ImageView pay, favorite;
     private  pet_profile_adapter adapter;
     private List<pet> petlist; // was petsearch
     private List<pet> availList;
@@ -56,6 +58,7 @@ public class petprofileview extends AppCompatActivity {
 //        final String pet_type = extras.getString("pettype");
 
         progressDialog = new ProgressDialog(this);
+
 
         recyclerView = findViewById(R.id.profile_recycle);
         recyclerView.setHasFixedSize(true);

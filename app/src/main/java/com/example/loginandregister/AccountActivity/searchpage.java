@@ -57,15 +57,9 @@ public class searchpage extends AppCompatActivity {
                 //Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menuDonate:
-                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
-                break;
-
             case R.id.menuFavorites:
                 Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
                 break;
-
-
 
         }
         return true;
@@ -91,6 +85,7 @@ public class searchpage extends AppCompatActivity {
         male = (RadioButton) findViewById(R.id.btn_male);
         female = (RadioButton) findViewById(R.id.btn_female);
         pet_age = (Spinner) findViewById(R.id.spr_petage);
+        pet_age.setPrompt("Age");
         search = (Button) findViewById(R.id.btn_search);
         dog = (RadioButton) findViewById(R.id.radio_pettypedog);
         cat = (RadioButton) findViewById(R.id.radio_pettypecat);
@@ -137,15 +132,15 @@ public class searchpage extends AppCompatActivity {
 
 //
 
-        Intent intent = new Intent(searchpage.this, searchresults.class);
-        Bundle bundle = new Bundle();
+    Intent intent = new Intent(searchpage.this, searchresults.class);
+    Bundle bundle = new Bundle();
         bundle.putString("Pettype", pettype);
         bundle.putString("PetBreed", petbreed);
         bundle.putString("gender",petGender);
         bundle.putString("petage", petage);
         intent.putExtras(bundle);
-        startActivity(intent);
-        finish();
+    startActivity(intent);
+    finish();
 
-    }
+}
 }

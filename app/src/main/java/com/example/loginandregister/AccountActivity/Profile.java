@@ -43,10 +43,6 @@ public class Profile extends AppCompatActivity {
                 Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.menuDonate:
-                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
-                break;
-
             case R.id.menuFavorites:
                 Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
                 break;
@@ -70,7 +66,7 @@ public class Profile extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         addPet = (Button) findViewById(R.id.btn_petadd);
-        donate = (Button) findViewById(R.id.btn_donation);
+       // donate = (Button) findViewById(R.id.btn_donation);
         searchPet = (Button) findViewById(R.id.btn_petsearch);
 
         addPet.setOnClickListener(new View.OnClickListener() {
@@ -85,14 +81,6 @@ public class Profile extends AppCompatActivity {
                 startActivity(new Intent(Profile.this, searchpage.class));
             }
         });
-
-        donate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Profile.this, PaymentActivity.class));
-            }
-        });
-
 
     }
 }

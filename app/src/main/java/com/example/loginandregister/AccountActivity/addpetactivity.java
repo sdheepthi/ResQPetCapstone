@@ -75,16 +75,11 @@ public class addpetactivity extends AppCompatActivity {
                 break;
 
             case R.id.menuSearch:
-                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(addpetactivity.this, searchpage.class));
                 break;
 
             case R.id.menuAddPet:
                 startActivity(new Intent(addpetactivity.this, addpetactivity.class));
-                //Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.menuDonate:
-                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.menuFavorites:

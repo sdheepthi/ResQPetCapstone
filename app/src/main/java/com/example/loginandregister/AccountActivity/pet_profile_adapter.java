@@ -25,6 +25,7 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
 
 
     private Context mCxt; // to inflate the layout
+    private ImageView pay, fav;
 
     private List<pet> petList; // list of pets was petsearch
 
@@ -40,6 +41,7 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
         //inflate the view holder
 //        LayoutInflater inflater = LayoutInflater.from(mCxt);
 //        View view = inflater.inflate(R.layout.recycler_petview, null);
+
 
         View view = LayoutInflater.from(mCxt).inflate(R.layout.pet_profile_view, parent, false);
         PetViewHolder viewHolder = new PetViewHolder(view);
@@ -61,13 +63,25 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
         holder.petGender.setText(pets.petgender);
         holder.petDescrip.setText(pets.petdesc);
         holder.petVacc.setText(String.valueOf(pets.vaccination));
+        holder.payButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(mCxt, PaymentActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("petid",pets.getPetID());
+                bundle.putString("petFee",pets.fee);
+
+                intent.putExtras(bundle);
+                mCxt.startActivity(intent);
+            }
+
+
+        });
         Picasso picassoInstance = new Picasso.Builder(mCxt)
                 .addRequestHandler(new FirebaseRequestHandler())
                 .build();
 
-        picassoInstance.load("gs://resqpet-a4760.appspot.com/petimages/pets" + pets.getPetID())
-                .fit().centerInside()
-                .into(holder.petImg);
     }
 
     @Override
@@ -79,7 +93,7 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
     public class PetViewHolder extends RecyclerView.ViewHolder {
 
         public TextView petName, petAge, petBreed, price,gender, petGender, petFee,petDescrip, petVacc;
-        public ImageView petImg;
+        public ImageView petImg, payButton;
 
         public PetViewHolder(View itemView) {
             super(itemView);
@@ -93,6 +107,7 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
             petFee = itemView.findViewById(R.id.adopt_fee);
             petDescrip = itemView.findViewById(R.id.pet_descrip);
             petVacc = itemView.findViewById(R.id.vaccinate);
+            payButton = itemView.findViewById(R.id.payPet);
 
         }
 
