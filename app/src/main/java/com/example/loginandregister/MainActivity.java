@@ -20,6 +20,7 @@ import com.example.loginandregister.AccountActivity.LoginActivity;
 import com.example.loginandregister.AccountActivity.Profile;
 import com.example.loginandregister.AccountActivity.SignupActivity;
 import com.example.loginandregister.AccountActivity.addpetactivity;
+import com.example.loginandregister.AccountActivity.searchpage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,22 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.menuSearch:
-                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, searchpage.class));
                 break;
 
             case R.id.menuAddPet:
                 startActivity(new Intent(MainActivity.this, addpetactivity.class));
-                //Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.menuDonate:
-                Toast.makeText(this, "You clicked to donate", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.menuFavorites:
                 Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
                 break;
-
 
 
         }

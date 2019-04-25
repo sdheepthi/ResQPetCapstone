@@ -7,9 +7,16 @@
     tools:context=".AccountActivity.PaymentActivity"
     android:background="#ffffff">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary" />
+
         <com.braintreepayments.cardform.view.CardForm
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
         android:id="@+id/card_form"
         tools:ignore="MissingConstraints"/>
 

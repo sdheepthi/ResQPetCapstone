@@ -9,8 +9,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.loginandregister.R;
 import com.google.firebase.FirebaseApp;
@@ -43,10 +48,56 @@ public class searchresults extends AppCompatActivity {
     DatabaseReference dbpets;
     DatabaseReference dbuserpets;
 
+    //Nav bar menu/////////////////
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater= getMenuInflater();
+        menuInflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+
+            case R.id.menuHome:
+                startActivity(new Intent(searchresults.this, Profile.class));
+                break;
+
+            case R.id.menuSearch:
+                startActivity(new Intent(searchresults.this, searchpage.class));
+                break;
+
+            case R.id.menuAddPet:
+                startActivity(new Intent(searchresults.this, addpetactivity.class));
+                break;
+
+            case R.id.menuFavorites:
+                Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
+                break;
+
+        }
+        return true;
+    }
+    ////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchresults);
+
+
+        //toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        //setting the title
+        toolbar.setTitle("ResQpet");
+
+        //placing toolbar in place of actionbar
+        setSupportActionBar(toolbar);
+
+
         FirebaseApp.initializeApp(this);
         Bundle extras = getIntent().getExtras();
         final String pet_type = extras.getString("Pettype");

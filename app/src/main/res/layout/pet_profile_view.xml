@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary" />
 
+   //Picture/name/and background
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
@@ -53,7 +54,9 @@
             />
 
     </RelativeLayout>
+///////
 
+    /// Bottom two buttons below picture
     <LinearLayout
                 android:id="@+id/favbar"
                 android:layout_width="match_parent"
@@ -138,7 +141,9 @@
 
 </LinearLayout>
 
+    ////
 
+    ///Info section
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

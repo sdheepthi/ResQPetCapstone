@@ -107,6 +107,10 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
                         Intent intent = new Intent(mCxt, petprofileview.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("petid",pets.getPetID());
+                        bundle.putString("petName",pets.getPetname());
+                        bundle.putString("petAge",pets.getPetage());
+                        bundle.putString("petBreed",pets.getPetBreed());
+                        bundle.putString("petGender",pets.getPetgender());
 
                         intent.putExtras(bundle);
                         mCxt.startActivity(intent);
