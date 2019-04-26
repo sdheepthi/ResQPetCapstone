@@ -1,10 +1,12 @@
 package com.example.loginandregister.AccountActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,10 +38,14 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
 
     private Context mCxt; // to inflate the layout
     private ImageView pay, fav;
+    AlertDialog.Builder alertBuilder;
+
 
     private List<pet> petList; // list of pets was petsearch
 
     DatabaseReference favdb = FirebaseDatabase.getInstance().getReference("favourites");
+    DatabaseReference rmPets = FirebaseDatabase.getInstance().getReference("pets");
+
     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -95,14 +101,47 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
         holder.payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // This will create a pop up for confirmation
+                alertBuilder = new AlertDialog.Builder(mCxt);
+                alertBuilder.setTitle("Confirm " + pets.petname +
+                        " adoption fee of $" + pets.fee + "?");
+                alertBuilder.setMessage("");
+                // User hits confirm then will send the user to the payment page
+                alertBuilder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        Intent intent = new Intent(mCxt, PaymentActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("petid",pets.getPetID());
+                        bundle.putString("petFee",pets.fee);
 
-                Intent intent = new Intent(mCxt, PaymentActivity.class);
+                        intent.putExtras(bundle);
+                        mCxt.startActivity(intent);
+
+                        rmPets.child(pets.petID).removeValue();
+
+
+
+                    }
+                });
+                // If user hits cancel then dismisses dialog
+                alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = alertBuilder.create();
+                alertDialog.show();
+
+                /*Intent intent = new Intent(mCxt, PaymentActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("petid",pets.getPetID());
                 bundle.putString("petFee",pets.fee);
 
                 intent.putExtras(bundle);
-                mCxt.startActivity(intent);
+                mCxt.startActivity(intent);*/
             }
 
 
