@@ -52,7 +52,7 @@ public class PaymentActivity extends AppCompatActivity {
                 break;
 
             case R.id.menuFavorites:
-                Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(PaymentActivity.this, favPage.class));
                 break;
 
         }

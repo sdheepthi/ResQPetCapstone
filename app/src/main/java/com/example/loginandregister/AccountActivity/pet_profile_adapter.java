@@ -120,6 +120,7 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
                         mCxt.startActivity(intent);
 
                         rmPets.child(pets.petID).removeValue();
+                        favdb.child(pets.petID).removeValue();
 
 
 
@@ -150,6 +151,10 @@ public class pet_profile_adapter extends RecyclerView.Adapter<pet_profile_adapte
         Picasso picassoInstance = new Picasso.Builder(mCxt)
                 .addRequestHandler(new FirebaseRequestHandler())
                 .build();
+
+        picassoInstance.load("gs://resqpet-a4760.appspot.com/petimages/pets"+pets.getPetID())
+                .fit().centerInside()
+                .into(holder.petImg);
 
     }
 

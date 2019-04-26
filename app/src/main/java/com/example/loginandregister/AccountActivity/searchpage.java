@@ -16,6 +16,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.loginandregister.MainActivity;
 import com.example.loginandregister.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -58,7 +59,7 @@ public class searchpage extends AppCompatActivity {
                 break;
 
             case R.id.menuFavorites:
-                Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(searchpage.this, favPage.class));
                 break;
 
         }

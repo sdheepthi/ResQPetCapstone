@@ -86,7 +86,7 @@ public class addpetactivity extends AppCompatActivity {
                 break;
 
             case R.id.menuFavorites:
-                Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(addpetactivity.this, favPage.class));
                 break;
 
         }

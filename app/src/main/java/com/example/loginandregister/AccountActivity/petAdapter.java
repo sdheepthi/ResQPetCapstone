@@ -40,7 +40,7 @@ public class petAdapter extends RecyclerView.Adapter<petAdapter.PetViewHolder> {
 
     public  List<favouritePet> favlist;
 
-    DatabaseReference favdb = FirebaseDatabase.getInstance().getReference("favourites");
+    DatabaseReference favdb = FirebaseDatabase.getInstance().getReference("Favorite");
     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     FirebaseAuth auth = FirebaseAuth.getInstance();

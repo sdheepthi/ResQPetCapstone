@@ -2,13 +2,19 @@ package com.example.loginandregister.AccountActivity;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 
+import com.example.loginandregister.MainActivity;
 import com.example.loginandregister.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,6 +45,43 @@ public class favPage extends AppCompatActivity
     DatabaseReference dbpets;
     DatabaseReference dbfavourite;
 
+
+
+    //Nav bar menu/////////////////
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater= getMenuInflater();
+        menuInflater.inflate(R.menu.menu,menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+
+            case R.id.menuHome:
+                startActivity(new Intent(favPage.this, MainActivity.class));
+                break;
+
+            case R.id.menuSearch:
+                startActivity(new Intent(favPage.this, searchpage.class));
+                break;
+
+            case R.id.menuAddPet:
+                startActivity(new Intent(favPage.this, addpetactivity.class));
+                //Toast.makeText(this, "You clicked to add pet", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menuFavorites:
+                startActivity(new Intent(favPage.this, favPage.class));
+                break;
+
+        }
+        return true;
+    }
+    ////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +92,14 @@ public class favPage extends AppCompatActivity
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
 
+        //toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        //setting the title
+        toolbar.setTitle("ResQpet");
+
+        //placing toolbar in place of actionbar
+        setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.search_recycler);
         recyclerView.setHasFixedSize(true);
