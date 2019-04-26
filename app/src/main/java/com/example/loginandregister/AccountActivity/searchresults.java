@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.loginandregister.MainActivity;
 import com.example.loginandregister.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -62,7 +63,7 @@ public class searchresults extends AppCompatActivity {
         switch(item.getItemId()){
 
             case R.id.menuHome:
-                startActivity(new Intent(searchresults.this, Profile.class));
+                startActivity(new Intent(searchresults.this, MainActivity.class));
                 break;
 
             case R.id.menuSearch:

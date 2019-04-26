@@ -4,55 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AccountActivity.Profile">
+    android:background="@color/bg_main"
+    android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#ffffff"
-        android:layout_below="@+id/toolbar"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:layout_below="@+id/toolbar">
 
-        <Button
-            android:id="@+id/btn_petadd"
-            android:layout_width="wrap_content"
-            android:layout_height="43dp"
-            android:text="add pet"
-            tools:layout_editor_absoluteX="161dp"
-            tools:layout_editor_absoluteY="129dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom|center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_petsearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="search pet"
-            tools:layout_editor_absoluteX="143dp"
-            tools:layout_editor_absoluteY="263dp" />
-        <Button
-            android:id="@+id/btn_fav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View saved pets"
-            tools:layout_editor_absoluteX="143dp"
-            tools:layout_editor_absoluteY="263dp" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="88dp"
+                android:layout_height="41dp"
+                android:text="Name" />
 
-        <Button
-            android:id="@+id/btn_donation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="260dp"
-            android:text="pay donation"
-            tools:layout_editor_absoluteX="142dp" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/profile" />
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="70dp"
+            android:paddingTop="100dp">
+            <TextView
+                android:id="@+id/Intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Welcome to ResQpet"
+                android:textSize="32dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+              />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoText="false"
+                    android:text="someone@someone.com"
+                    android:textSize="27dp"/>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/change_password_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/change_password"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="312dp"
+                android:layout_above="@+id/remove_user_button"
+               />
+
+            <Button
+                android:id="@+id/remove_user_button"
+                style="?android:textAppearanceSmall"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_user"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="408dp"
+                android:layout_above="@+id/sign_out"
+                 />
+
+            <Button
+                android:id="@+id/sign_out"
+                style="?android:textAppearanceSmall"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/btn_sign_out"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="42dp"
+                tools:layout_editor_absoluteY="456dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary" />
+
    //Picture/name/and background
     <RelativeLayout
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
         android:paddingBottom="15dp"
         android:background="@color/colorPrimary">
 

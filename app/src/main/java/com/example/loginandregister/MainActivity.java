@@ -20,6 +20,7 @@ import com.example.loginandregister.AccountActivity.LoginActivity;
 import com.example.loginandregister.AccountActivity.Profile;
 import com.example.loginandregister.AccountActivity.SignupActivity;
 import com.example.loginandregister.AccountActivity.addpetactivity;
+import com.example.loginandregister.AccountActivity.favPage;
 import com.example.loginandregister.AccountActivity.searchpage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         switch(item.getItemId()){
 
             case R.id.menuHome:
-                startActivity(new Intent(MainActivity.this, Profile.class));
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
                 break;
 
             case R.id.menuSearch:
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.menuFavorites:
-                Toast.makeText(this, "You clicked for favorites", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, favPage.class));
                 break;
 
 

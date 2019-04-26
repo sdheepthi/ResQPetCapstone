@@ -19,6 +19,7 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.loginandregister.MainActivity;
 import com.example.loginandregister.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -72,11 +73,11 @@ public class addpetactivity extends AppCompatActivity {
         switch(item.getItemId()){
 
             case R.id.menuHome:
-                startActivity(new Intent(addpetactivity.this, Profile.class));
+                startActivity(new Intent(addpetactivity.this, MainActivity.class));
                 break;
 
             case R.id.menuSearch:
-                Toast.makeText(this, "You clicked to search", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(addpetactivity.this, searchpage.class));
                 break;
 
             case R.id.menuAddPet:
